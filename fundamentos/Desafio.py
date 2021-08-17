@@ -7,11 +7,18 @@ def Programa():
             diasNoMes = 28
         else:
             diasNoMes = 30   
-        return diasNoMes      
+        return diasNoMes 
+    def DiasDoAno(ano):
+        diasNoAno = 0
+        if ano%4 == 0:
+            diasNoAno = 366
+        else:
+            diasNoAno = 365 
+        return diasNoAno     
     def DiasNumPeriodoDoTempo(mesAtual, anoAtual):
         diasCorridos = 0
         while anoAtual-1>primeiroAno:
-            diasCorridos = diasCorridos + 365
+            diasCorridos = diasCorridos + DiasDoAno(anoAtual)
             anoAtual-=1
         while mesAtual-1>primeiroMes:
             diasCorridos = diasCorridos + DiasDoMes(mesAtual)        
