@@ -1,32 +1,31 @@
-print("BEM VINDO AO CONTADOR DE DIAS PASSADOS!")
-print("")
-Programa()
-def Programa():
-        diasNoMes = 0
-        diasCorridos = 0
+def Programa():    
     def DiasDoMes(mes):
+        diasNoMes = 0
         if (mes<8 and mes%2 != 0) or (mes>7 and mes%2 == 0):
             diasNoMes = 31
         elif mes == 2:
-            diasNoMes == 28
+            diasNoMes = 28
         else:
             diasNoMes = 30   
         return diasNoMes      
     def DiasNumPeriodoDoTempo(mesAtual, anoAtual):
+        diasCorridos = 0
         while anoAtual-1>primeiroAno:
             diasCorridos = diasCorridos + 365
-            mesAtual-=1
+            anoAtual-=1
         while mesAtual-1>primeiroMes:
             diasCorridos = diasCorridos + DiasDoMes(mesAtual)        
             mesAtual-=1
         diasCorridos = diasCorridos + (DiasDoMes(primeiroMes)-primeiroDia)+ ultimoDia        
-        return diasCorridos
-    primeiroDia int(input("A partir de que dia você desejar contar?"))
-    primeiroMes int(input("A partir de que mês você desejar contar?(em numero, ex: agosto = 8)"))
-    primeiroAno int(input("A partir de que ano você desejar contar?"))
-    ultimoDia int(input("Até que dia você desejar contar?"))
-    ultimoMes int(input("Até que mês você desejar contar?(em numero, ex: agosto = 8)"))
-    ultimoAno int(input("Até que ano você desejar contar?"))
+        return diasCorridos 
+    print("BEM VINDO AO CONTADOR DE DIAS PASSADOS!")
+    print("")       
+    primeiroDia = int(input("A partir de que dia você desejar contar?"))
+    primeiroMes = int(input("A partir de que mês você desejar contar?(em numero, ex: agosto = 8)"))
+    primeiroAno = int(input("A partir de que ano você desejar contar?"))
+    ultimoDia = int(input("Até que dia você desejar contar?"))
+    ultimoMes = int(input("Até que mês você desejar contar?(em numero, ex: agosto = 8)"))
+    ultimoAno = int(input("Até que ano você desejar contar?"))    
     if (primeiroMes>12 or primeiroMes<1) or (ultimoMes >12 or ultimoMes <1):
         print("Mes Inexistente")
         Programa()
@@ -55,3 +54,5 @@ def Programa():
         #COMPLETO
         else:
             print(DiasNumPeriodoDoTempo(ultimoMes,ultimoAno),"dias se passaram!")
+    Programa()
+Programa()
