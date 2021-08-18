@@ -8,6 +8,23 @@ def Programa():
         else:
             diasNoMes = 30   
         return diasNoMes 
+    def Exececoes(diaMesOuAno, variavel):
+        if (diaMesOuAno == "Ano"):
+            if(variavel<0):
+                print("Ano inexistente")
+                Programa()
+        elif (diaMesOuAno == "Mes"):
+            if(variavel <1 or variavel >12):
+                print("Mes inexistente")
+                Programa()
+        elif (diaMesOuAno == "PrimeiroDia"):
+            if(variavel<1 or variavel>DiasDoMes(primeiroMes)):
+                print("Dia inexistente")
+                Programa()
+        elif (diaMesOuAno == "UltimoDia"):
+            if(variavel<1 or variavel>DiasDoMes(ultimoMes)):
+                print("Dia inexistente")
+                Programa()       
     def DiasDoAno(ano):
         diasNoAno = 0
         if ano%4 == 0:
@@ -23,22 +40,22 @@ def Programa():
         while mesAtual-1>primeiroMes:
             diasCorridos = diasCorridos + DiasDoMes(mesAtual)        
             mesAtual-=1
-        diasCorridos = diasCorridos + (DiasDoMes(primeiroMes)-primeiroDia)+ ultimoDia        
+        diasCorridos = diasCorridos + (DiasDoMes(primeiroMes)-primeiroDia)+ ultimoDia   
         return diasCorridos 
     print("BEM VINDO AO CONTADOR DE DIAS PASSADOS!")
-    print("")       
-    primeiroDia = int(input("A partir de que dia você desejar contar?"))
-    primeiroMes = int(input("A partir de que mês você desejar contar?(em numero, ex: agosto = 8)"))
+    print("") 
     primeiroAno = int(input("A partir de que ano você desejar contar?"))
-    ultimoDia = int(input("Até que dia você desejar contar?"))
+    Exececoes("Ano", primeiroAno)  
+    ultimoAno = int(input("Até que ano você desejar contar?")) 
+    Exececoes("Ano", ultimoAno)   
+    primeiroMes = int(input("A partir de que mês você desejar contar?(em numero, ex: agosto = 8)"))
+    Exececoes("Mes", primeiroMes)
     ultimoMes = int(input("Até que mês você desejar contar?(em numero, ex: agosto = 8)"))
-    ultimoAno = int(input("Até que ano você desejar contar?"))    
-    if (primeiroMes>12 or primeiroMes<1) or (ultimoMes >12 or ultimoMes <1):
-        print("Mes Inexistente")
-        Programa()
-    elif (primeiroDia>DiasDoMes(primeiroMes) or primeiroDia<1) or (ultimoDia >DiasDoMes(ultimoMes) or ultimoDia <1):
-        print("Dia Inexistente")
-        Programa()
+    Exececoes("Mes", ultimoMes)
+    primeiroDia = int(input("A partir de que dia você desejar contar?"))
+    Exececoes("PrimeiroDia", primeiroDia)
+    ultimoDia = int(input("Até que dia você desejar contar?"))     
+    Exececoes("UltimoDia", ultimoDia)   
     #FEITO
     if ultimoAno < primeiroAno:
         print("Nós não voltamos para o passado, por favor tente novamente!")
